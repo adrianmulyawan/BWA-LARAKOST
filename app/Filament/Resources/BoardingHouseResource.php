@@ -80,6 +80,7 @@ class BoardingHouseResource extends Resource
                         Tabs\Tab::make('Bonus')
                             ->schema([
                                 Repeater::make('bonuses')
+                                    ->label('Bonus')
                                     ->relationship('bonuses')
                                     ->schema([
                                         FileUpload::make('image')
@@ -99,6 +100,7 @@ class BoardingHouseResource extends Resource
                         Tabs\Tab::make('Kamar')
                             ->schema([
                                 Repeater::make('rooms')
+                                    ->label('Kamar')
                                     ->relationship('rooms')
                                     ->schema([
                                         TextInput::make('name')
@@ -129,6 +131,16 @@ class BoardingHouseResource extends Resource
                                             ->label('Tersedia')
                                             ->onIcon('heroicon-m-check')
                                             ->offIcon('heroicon-m-x-mark'),
+                                        Repeater::make('roomImages')
+                                            ->label('Gambar Kamar')
+                                            ->relationship('roomImages')
+                                            ->schema([
+                                                FileUpload::make('image')
+                                                    ->label('Gambar Kamar')
+                                                    ->required()
+                                                    ->image()
+                                                    ->directory('room_images'),
+                                            ]),
                                     ])
                             ]),
                     ])
