@@ -7,6 +7,7 @@ use App\Filament\Resources\BoardingHouseResource\RelationManagers;
 use App\Models\BoardingHouse;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
@@ -77,7 +78,21 @@ class BoardingHouseResource extends Resource
                             ]),
                         Tabs\Tab::make('Bonus')
                             ->schema([
-                                // ...
+                                Repeater::make('bonuses')
+                                    ->schema([
+                                        FileUpload::make('image')
+                                            ->required()
+                                            ->image()
+                                            ->directory('bonuses')
+                                            ->label('Gambar'),
+                                        TextInput::make('name')
+                                            ->required()
+                                            ->label('Nama'),
+                                        Textarea::make('description')
+                                            ->required()
+                                            ->label('Deskripsi')
+                                    ])
+                                    ->columns(2)
                             ]),
                         Tabs\Tab::make('Tab 3')
                             ->schema([
