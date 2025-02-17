@@ -17,6 +17,8 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -117,10 +119,6 @@ class BoardingHouseResource extends Resource
                                             ->required()
                                             ->numeric()
                                             ->label('Kapasitas Kamar'),
-                                        TextInput::make('square_feet')
-                                            ->required()
-                                            ->numeric()
-                                            ->label('Ukuran Kamar'),
                                         TextInput::make('price_per_month')
                                             ->required()
                                             ->numeric()
@@ -152,13 +150,29 @@ class BoardingHouseResource extends Resource
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make('thumbnail')
+                    ->label('Gambar'),
+                TextColumn::make('name')
+                    ->label('Nama Hunian')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('category.name')
+                    ->label('Type')
+                    ->searchable(),
+                TextColumn::make('city.name')
+                    ->label('Lokasi')
+                    ->searchable(),
+                TextColumn::make('price')
+                    ->label('Harga')
+                    ->money('IDR'),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
