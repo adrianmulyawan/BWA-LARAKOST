@@ -13,6 +13,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -79,12 +80,14 @@ class BoardingHouseResource extends Resource
                         Tabs\Tab::make('Bonus')
                             ->schema([
                                 Repeater::make('bonuses')
+                                    ->relationship('bonuses')
                                     ->schema([
                                         FileUpload::make('image')
                                             ->required()
                                             ->image()
                                             ->directory('bonuses')
-                                            ->label('Gambar'),
+                                            ->label('Gambar')
+                                            ->columnSpan(2),
                                         TextInput::make('name')
                                             ->required()
                                             ->label('Nama'),
@@ -92,11 +95,41 @@ class BoardingHouseResource extends Resource
                                             ->required()
                                             ->label('Deskripsi')
                                     ])
-                                    ->columns(2)
                             ]),
-                        Tabs\Tab::make('Tab 3')
+                        Tabs\Tab::make('Kamar')
                             ->schema([
-                                // ...
+                                Repeater::make('rooms')
+                                    ->relationship('rooms')
+                                    ->schema([
+                                        TextInput::make('name')
+                                            ->required()
+                                            ->label('Nama'),
+                                        TextInput::make('room_type')
+                                            ->required()
+                                            ->label('Tipe Kamar'),
+                                        TextInput::make('square_feet')
+                                            ->required()
+                                            ->numeric()
+                                            ->label('Ukuran Kamar'),
+                                        TextInput::make('capacity')
+                                            ->required()
+                                            ->numeric()
+                                            ->label('Kapasitas Kamar'),
+                                        TextInput::make('square_feet')
+                                            ->required()
+                                            ->numeric()
+                                            ->label('Ukuran Kamar'),
+                                        TextInput::make('price_per_month')
+                                            ->required()
+                                            ->numeric()
+                                            ->prefix('IDR')
+                                            ->label('Harga'),
+                                        Toggle::make('is_available')
+                                            ->required()
+                                            ->label('Tersedia')
+                                            ->onIcon('heroicon-m-check')
+                                            ->offIcon('heroicon-m-x-mark'),
+                                    ])
                             ]),
                     ])
                     ->columnSpan(2)
