@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Interfaces\BoardingHouseRepositoryInterface;
-use App\Interfaces\CategoryRepositoryInterfaces;
+use App\Interfaces\CategoryRepositoryInterface;
 use App\Interfaces\CityRepositoryInterface;
 use App\Repositories\BoardingHouseRepository;
 use App\Repositories\CategoryRepository;
@@ -18,7 +18,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(CityRepositoryInterface::class, CityRepository::class);
-        $this->app->bind(CategoryRepositoryInterfaces::class, CategoryRepository::class);
+        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->bind(BoardingHouseRepositoryInterface::class, BoardingHouseRepository::class);
     }
 
