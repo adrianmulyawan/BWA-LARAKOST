@@ -12,4 +12,6 @@ Route::get('/check-booking', [BookingController::class, 'check'])
     ->name('check-booking');
 
 Route::get('/find-boarding-house', [BoardingHouseController::class, 'find'])
-    ->name('find-boarding-house');
+    ->name('boarding-house.find');
+Route::get('/result-boarding-house', [BoardingHouseController::class, 'findResult'])
+    ->name('boarding-house.result');
