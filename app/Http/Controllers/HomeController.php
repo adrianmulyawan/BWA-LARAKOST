@@ -26,11 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $categories = $this->categoryRepository->getAllCategories();
-
         $popularBoardingHouses = $this->boadrdingHouseRepository->getPopularBoardingHouses();
-
         $cities = $this->cityRepository->getAllCities();
-
         $boardingHouses = $this->boadrdingHouseRepository->getAllBoardingHouses();
 
         return view('pages.home', compact(
