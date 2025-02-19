@@ -29,7 +29,7 @@
                                 <h3 class="font-semibold">
                                     {{ $category->name }}
                                 </h3>
-                                <p class="text-sm text-ngekos-grey">1,304 Kos</p>
+                                <p class="text-sm text-ngekos-grey">{{ $category->boardingHouses->count() }} Kos</p>
                             </div>
                         </div>
                     </a>
@@ -118,8 +118,8 @@
                             <h3 class="font-semibold">
                                 {{ $city->name }}
                             </h3>
-                            <p class="text-sm text-ngekos-grey">1,
-                                304 Kos
+                            <p class="text-sm text-ngekos-grey">
+                                {{ $city->boardingHouses->count() }} Kos
                             </p>
                         </div>
                     </div>
