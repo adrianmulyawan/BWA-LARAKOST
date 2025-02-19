@@ -33,4 +33,16 @@ class BoardingHouseController extends Controller
             'categories'
         ));
     }
+
+    public function findResult(Request $request)
+    {
+        $boardingName = $request['name'];
+        $city = $request['city'];
+        $category = $request['category'];
+
+        $items = $this->boadrdingHouseRepository->getAllBoardingHouses($boardingName, $city, $category);
+        // dd($items);
+
+        return view('pages.boarding_house.index', compact('items'));
+    }
 }
