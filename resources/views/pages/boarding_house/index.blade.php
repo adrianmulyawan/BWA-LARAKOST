@@ -7,7 +7,7 @@
     <div id="TopNav" class="relative flex items-center justify-between px-5 mt-[60px]">
         <a href="find-kos.html"
             class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white">
-            <img src="assets/images/icons/arrow-left.svg" class="w-[28px] h-[28px]" alt="icon">
+            <img src="{{ asset('assets/images/icons/arrow-left.svg') }}" class="w-[28px] h-[28px]" alt="icon">
         </a>
         <p class="font-semibold">Search Results</p>
         <div class="dummy-btn w-12"></div>
@@ -33,26 +33,29 @@
                         </h3>
                         <hr class="border-[#F1F2F6]">
                         <div class="flex items-center gap-[6px]">
-                            <img src="assets/images/icons/location.svg" class="w-5 h-5 flex shrink-0" alt="icon">
+                            <img src="{{ asset('assets/images/icons/location.svg') }}" class="w-5 h-5 flex shrink-0"
+                                alt="icon">
                             <p class="text-sm text-ngekos-grey">
                                 {{ $item->city->name }}
                             </p>
                         </div>
                         <div class="flex items-center gap-[6px]">
-                            <img src="assets/images/icons/3dcube.svg" class="w-5 h-5 flex shrink-0" alt="icon">
+                            <img src="{{ asset('assets/images/icons/3dcube.svg') }}" class="w-5 h-5 flex shrink-0"
+                                alt="icon">
                             <p class="text-sm text-ngekos-grey">
                                 In {{ $item->category->name }}
                             </p>
                         </div>
                         <div class="flex items-center gap-[6px]">
-                            <img src="assets/images/icons/profile-2user.svg" class="w-5 h-5 flex shrink-0" alt="icon">
+                            <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="w-5 h-5 flex shrink-0"
+                                alt="icon">
                             <p class="text-sm text-ngekos-grey">4 People</p>
                         </div>
                         <hr class="border-[#F1F2F6]">
                         <p class="font-semibold text-lg text-ngekos-orange">
                             {{ Number::currency($item->price, 'IDR') }}
                             <span class="text-sm text-ngekos-grey font-normal">
-                                {{ $item->category->name == 'Kost' ? '/bulan' : '/malam' }}
+                                {{ $item->category->name == 'Kost' ? '/bulan' : '/hari' }}
                             </span>
                         </p>
                     </div>
