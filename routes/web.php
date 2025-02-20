@@ -3,6 +3,7 @@
 use App\Http\Controllers\BoardingHouseController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,6 @@ Route::get('/result-boarding-house', [BoardingHouseController::class, 'findResul
 
 Route::get('/categories/{slug:name}', [CategoryController::class, 'show'])
     ->name('category.show');
+
+Route::get('/cities/{slug:name}', [CityController::class, 'show'])
+    ->name('city.show');
