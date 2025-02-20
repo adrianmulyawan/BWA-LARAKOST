@@ -17,8 +17,10 @@ Route::get('boarding-house/find', [BoardingHouseController::class, 'find'])
     ->name('boarding-house.find');
 Route::get('boarding-house/result', [BoardingHouseController::class, 'findResult'])
     ->name('boarding-house.result');
-Route::get('/boarding-house/detail/{slug:name}', [BoardingHouseController::class, 'show'])
+Route::get('/boarding-house/{slug:name}', [BoardingHouseController::class, 'show'])
     ->name('boarding-house.show');
+Route::get('/boarding-house/{slug}/rooms', [BoardingHouseController::class, 'rooms'])
+    ->name('boarding-house.rooms');
 
 Route::get('/categories/{slug:name}', [CategoryController::class, 'show'])
     ->name('category.show');
