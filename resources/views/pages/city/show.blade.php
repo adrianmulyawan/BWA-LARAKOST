@@ -6,7 +6,7 @@
         class="absolute top-0 w-full h-[570px] rounded-b-[75px] bg-[linear-gradient(180deg,#F2F9E6_0%,#D2EDE4_100%)]">
     </div>
     <div id="TopNav" class="relative flex items-center justify-between px-5 mt-[60px]">
-        <a href="index.html"
+        <a href="{{ route('home') }}"
             class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white">
             <img src="{{ asset('assets/images/icons/arrow-left.svg') }}" class="w-[28px] h-[28px]" alt="icon">
         </a>
@@ -25,7 +25,7 @@
     </div>
     <section id="Result" class=" relative flex flex-col gap-4 px-5 mt-5 mb-9">
         @foreach ($items as $item)
-            <a href="details.html" class="card">
+            <a href="{{ route('boarding-house.show', $item->slug) }}" class="card">
                 <div
                     class="flex rounded-[30px] border border-[#F1F2F6] p-4 gap-4 bg-white hover:border-[#91BF77] transition-all duration-300">
                     <div class="flex w-[120px] h-[183px] shrink-0 rounded-[30px] bg-[#D9D9D9] overflow-hidden">
