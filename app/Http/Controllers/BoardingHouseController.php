@@ -54,4 +54,11 @@ class BoardingHouseController extends Controller
 
         return view('pages.boarding_house.detail', compact('item'));
     }
+
+    public function rooms($slug)
+    {
+        $item = $this->boadrdingHouseRepository->getPopularBoardingHouseBySlug($slug);
+        // dd($item->rooms);
+        return view('pages.boarding_house.room-available', compact('item'));
+    }
 }
