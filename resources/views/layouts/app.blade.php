@@ -15,10 +15,12 @@
     <div id="Content-Container"
         class="relative flex flex-col w-full max-w-[640px] min-h-screen mx-auto bg-white overflow-x-hidden">
         @yield('content')
-        @include('includes.navigation')
+        {{-- @include('includes.navigation') --}}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{{ asset('assets/js/index.js') }}"></script>
+
+    @stack('scripts')
 </body>
 
 </html>
