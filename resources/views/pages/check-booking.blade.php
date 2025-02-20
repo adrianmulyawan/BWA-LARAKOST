@@ -74,4 +74,6 @@
             </div>
         </nav>
     </div>
+
+    @include('includes.navigation')
 @endsection

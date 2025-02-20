@@ -88,6 +88,6 @@
             </div>
         </nav>
     </div>
-
+    @include('includes.navigation')
     <script src="{{ asset('assets/js/find-kos.js') }}"></script>
 @endsection

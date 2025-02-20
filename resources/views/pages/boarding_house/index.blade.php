@@ -63,4 +63,5 @@
             </a>
         @endforeach
     </section>
+    @include('includes.navigation')
 @endsection
