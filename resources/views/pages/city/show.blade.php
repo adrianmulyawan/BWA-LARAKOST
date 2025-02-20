@@ -60,7 +60,7 @@
                         <p class="font-semibold text-lg text-ngekos-orange">
                             {{ Number::currency($item->price, 'IDR') }}
                             <span class="text-sm text-ngekos-grey font-normal">
-                                {{ $item->category->name = 'Kost' ? '/bulan' : '/hari' }}
+                                {{ $item->category->name === 'Kost' ? '/bulan' : '/hari' }}
                             </span>
                         </p>
                     </div>
