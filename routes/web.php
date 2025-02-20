@@ -13,10 +13,12 @@ Route::get('/', [HomeController::class, 'index'])
 Route::get('/check-booking', [BookingController::class, 'check'])
     ->name('check-booking');
 
-Route::get('/find-boarding-house', [BoardingHouseController::class, 'find'])
+Route::get('boarding-house/find', [BoardingHouseController::class, 'find'])
     ->name('boarding-house.find');
-Route::get('/result-boarding-house', [BoardingHouseController::class, 'findResult'])
+Route::get('boarding-house/result', [BoardingHouseController::class, 'findResult'])
     ->name('boarding-house.result');
+Route::get('/boarding-house/detail/{slug:name}', [BoardingHouseController::class, 'show'])
+    ->name('boarding-house.show');
 
 Route::get('/categories/{slug:name}', [CategoryController::class, 'show'])
     ->name('category.show');
