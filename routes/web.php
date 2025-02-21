@@ -22,6 +22,13 @@ Route::get('/boarding-house/{slug:name}', [BoardingHouseController::class, 'show
 Route::get('/boarding-house/{slug}/rooms', [BoardingHouseController::class, 'rooms'])
     ->name('boarding-house.rooms');
 
+Route::get('/boarding-house/booking/{slug:name}', [BookingController::class, 'booking'])
+    ->name('booking');
+Route::get('/boarding-house/booking/{slug:name}/information', [BookingController::class, 'information'])
+    ->name('booking.information');
+Route::post('/boarding-house/booking/{slug:name}/information/save', [BookingController::class, 'saveInformation'])
+    ->name('booking.information.save');
+
 Route::get('/categories/{slug:name}', [CategoryController::class, 'show'])
     ->name('category.show');
 
