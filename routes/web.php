@@ -28,6 +28,8 @@ Route::get('/boarding-house/booking/{slug:name}/information', [BookingController
     ->name('booking.information');
 Route::post('/boarding-house/booking/{slug:name}/information/save', [BookingController::class, 'saveInformation'])
     ->name('booking.information.save');
+Route::get('/boarding-house/booking/{slug:name}/checkout', [BookingController::class, 'checkout'])
+    ->name('booking.checkout');
 
 Route::get('/categories/{slug:name}', [CategoryController::class, 'show'])
     ->name('category.show');
