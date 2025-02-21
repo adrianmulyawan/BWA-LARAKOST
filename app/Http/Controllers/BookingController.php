@@ -80,6 +80,27 @@ class BookingController extends Controller
         ]);
 
         $this->transactionRepository->saveTransactionDataToSession($request->all());
-        dd($this->transactionRepository->getTransactionDataFromSession());
+        // dd($this->transactionRepository->getTransactionDataFromSession());
+
+        return redirect()->route('booking.checkout', $slug);
+    }
+
+    public function checkout($slug)
+    {
+        // panggil session yang telah kita simpan
+        $transaction = $this->transactionRepository->getTransactionDataFromSession();
+        // dd(intval($transaction['room']));
+
+        $boardingHouse = $this->boardingHouseRepository->getPopularBoardingHouseBySlug($slug);
+        // dd($boardingHouse);
+
+        $room = $this->boardingHouseRepository->getBoardingHouseRoomById(intval($transaction['room']));
+        // dd($room);
+
+        return view('pages.booking.checkout', compact(
+            'transaction',
+            'boardingHouse',
+            'room'
+        ));
     }
 }
