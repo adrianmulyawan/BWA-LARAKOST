@@ -66,7 +66,7 @@ class BookingController extends Controller
         $request->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',
-            'phone' => 'required',
+            'phone_number' => 'required',
             'duration' => 'required',
             'start_date' => 'required'
         ], [
@@ -74,7 +74,7 @@ class BookingController extends Controller
             'name.min' => 'Name must be at least 3 characters.',
             'email.required' => 'Email is required.',
             'email.email' => 'Email must be a valid email address.',
-            'phone.required' => 'Phone is required.',
+            'phone_number.required' => 'Phone is required.',
             'duration.required' => 'Duration is required.',
             'start_date.required' => 'Start date is required.',
         ]);
@@ -102,5 +102,14 @@ class BookingController extends Controller
             'boardingHouse',
             'room'
         ));
+    }
+
+    public function payment(Request $request)
+    {
+        $this->transactionRepository->saveTransactionDataToSession($request->all());
+
+        $transaction = $this->transactionRepository->saveTransaction($this->transactionRepository->getTransactionDataFromSession());
+
+        dd($transaction);
     }
 }
