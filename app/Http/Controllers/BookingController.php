@@ -31,14 +31,14 @@ class BookingController extends Controller
         // dd($request->all());
 
         // > ambil request dari formnya => id dari room
-        $data = $request->all();
+        // $data = $request->all();
 
         // > simpan didalam session (cara simple)
         // $request->session()->put('id', $data);
         // dd($request->session()->get('id'));
 
         // > Simpan session dengan repository pattern
-        $this->transactionRepository->saveTransactionDataToSession($data);
+        $this->transactionRepository->saveTransactionDataToSession($request->all());
         return redirect()->route('booking.information', $slug);
     }
 
@@ -46,13 +46,13 @@ class BookingController extends Controller
     {
         // panggil session yang telah kita simpan
         $transaction = $this->transactionRepository->getTransactionDataFromSession();
-        // dd($transaction);
+        // dd(intval($transaction['room']));
 
         $boardingHouse = $this->boardingHouseRepository->getPopularBoardingHouseBySlug($slug);
-        // dd($item);
+        // dd($boardingHouse);
 
-        $room = $this->boardingHouseRepository->getBoardingHouseRoomById($transaction);
-        dd($room);
+        $room = $this->boardingHouseRepository->getBoardingHouseRoomById(intval($transaction['room']));
+        // dd($room);
 
         return view('pages.booking.cust_info', compact(
             'transaction',
@@ -61,5 +61,25 @@ class BookingController extends Controller
         ));
     }
 
-    public function saveInformation() {}
+    public function saveInformation(Request $request, $slug)
+    {
+        $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'duration' => 'required',
+            'start_date' => 'required'
+        ], [
+            'name.required' => 'Name is required.',
+            'name.min' => 'Name must be at least 3 characters.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Email must be a valid email address.',
+            'phone.required' => 'Phone is required.',
+            'duration.required' => 'Duration is required.',
+            'start_date.required' => 'Start date is required.',
+        ]);
+
+        $this->transactionRepository->saveTransactionDataToSession($request->all());
+        dd($this->transactionRepository->getTransactionDataFromSession());
+    }
 }
