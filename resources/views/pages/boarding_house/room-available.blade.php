@@ -41,7 +41,7 @@
         </div>
     </div>
     {{-- Ruangan --}}
-    <form action="cust-info.html" class="relative flex flex-col gap-4 mt-5">
+    <form action="{{ route('booking', $item->slug) }}" class="relative flex flex-col gap-4 mt-5">
         <h2 class="font-bold px-5">Available Rooms</h2>
         <div id="RoomsContainer" class="flex flex-col gap-4 px-5">
             @foreach ($item->rooms as $room)
