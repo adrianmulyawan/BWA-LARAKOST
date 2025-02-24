@@ -33,6 +33,9 @@ Route::get('/boarding-house/booking/{slug:name}/checkout', [BookingController::c
 Route::post('/boarding-house/booking/{slug:name}/payment', [BookingController::class, 'payment'])
     ->name('booking.payment');
 
+Route::get('/booking-success', [BookingController::class, 'success'])
+    ->name('booking.success');
+
 Route::get('/categories/{slug:name}', [CategoryController::class, 'show'])
     ->name('category.show');
 
